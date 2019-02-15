@@ -87,9 +87,9 @@ export default {
         },
         close() {
             this.hovering = false;
-            this.visible = false;
             clearTimeout(this.timer);
             clearInterval(this.interval);
+            this.visible = false;
         },
         startTimer() {
             this.timer = setTimeout(() => {
@@ -103,12 +103,16 @@ export default {
     },
 
     render() {
+        const self = this;
+
         return this.$scopedSlots.default({
             visible: this.visible,
             hovering: this.hovering,
             progress: this.progressWidth,
-            startHovering: this.startHovering,
-            stopHovering: this.stopHovering,
+            hover: {
+                mouseenter: () => self.startHovering(),
+                mouseleave: () => self.stopHovering(),
+            },
             close: this.close,
         });
     },

@@ -1,18 +1,15 @@
 <template>
     <r-l-toastr :position="position"
-        :duration="duration">
-        <transition slot-scope="{
-                visible, hovering, close, progress, startHovering, stopHovering,
-            }"
+        v-bind="$attrs">
+        <transition slot-scope="{ visible, hovering, progress, hover, close }"
             appear
             :enter-active-class="enterClass"
             :leave-active-class="leaveClass"
             @after-leave="$emit('after-leave')">
             <slot :hovering="hovering"
                 :progress="progress"
-                :start-hovering="startHovering"
-                :stop-hovering="stopHovering"
                 :close="close"
+                :hover="hover"
                 v-if="visible"/>
         </transition>
     </r-l-toastr>
@@ -25,10 +22,6 @@ export default {
     components: { RLToastr },
 
     props: {
-        duration: {
-            type: Number,
-            required: true,
-        },
         position: {
             type: String,
             required: true,

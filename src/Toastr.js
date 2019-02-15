@@ -1,6 +1,6 @@
-class Notification {
-    constructor(vm, layout, options) {
-        this.vm = vm;
+class Toastr {
+    constructor(Vue, layout, options) {
+        this.Vue = Vue;
         this.layout = layout;
         this.options = options;
 
@@ -56,26 +56,20 @@ class Notification {
     }
 
     toastr(type, body) {
-        if (this.toastrDuration) {
-            this.options.duration = this.toastrDuration;
-        }
+        const ToastrNotification = this.Vue.extend(this.layout);
 
-        if (this.toastrPosition) {
-            this.options.position = this.toastrPosition;
-        }
-
-        const ToastrNotification = this.vm.extend(this.layout);
+        const props = Object.assign({}, this.options, { type, body });
 
         (new ToastrNotification({
-            propsData: { ...this.options, type, body },
+            propsData: props,
         })).$mount();
 
         this.reset();
     }
 
     reset() {
-        this.options = { ...this.options, ...this.defaults };
+        Object.assign(this.options, this.defaults);
     }
 }
 
-export default Notification;
+export default Toastr;

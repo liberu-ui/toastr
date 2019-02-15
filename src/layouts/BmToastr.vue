@@ -3,14 +3,11 @@
         :duration="duration"
         ref="toastr"
         @after-leave="$destroy()">
-        <div slot-scope="{
-                hovering, close, progress, startHovering, stopHovering,
-            }"
+        <div slot-scope="{ hovering, progress, hover, close }"
             class="notification toastr animated"
             :class="[{ 'highlight': hovering }, type ? `is-${type}` : '']"
             @click="close"
-            @mouseenter="startHovering"
-            @mouseleave="stopHovering">
+            v-on="hover">
             <div class="toastr-progress"
                 :style="progress"/>
             <article class="media">
