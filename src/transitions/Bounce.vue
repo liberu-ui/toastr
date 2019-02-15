@@ -1,5 +1,5 @@
 <template>
-    <r-l-toastr :position="position"
+    <renderless-toastr :position="position"
         v-bind="$attrs">
         <transition slot-scope="{ visible, hovering, progress, hover, close }"
             appear
@@ -12,14 +12,14 @@
                 :hover="hover"
                 v-if="visible"/>
         </transition>
-    </r-l-toastr>
+    </renderless-toastr>
 </template>
 
 <script>
-import RLToastr from '../renderless/Toastr.vue';
+import RenderlessToastr from '../renderless/Toastr.vue';
 
 export default {
-    components: { RLToastr },
+    components: { RenderlessToastr },
 
     props: {
         position: {

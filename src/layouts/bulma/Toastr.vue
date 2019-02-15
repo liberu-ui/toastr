@@ -38,11 +38,11 @@
 
 <script>
 
-import Types from '../config/types';
-import Icons from '../config/icons';
-import Bounce from '../transitions/Bounce.vue';
+import Types from '../../config/types';
+import Icons from '../../config/icons';
+import Bounce from '../../transitions/Bounce.vue';
 
-import positions from '../config/positions';
+import positions from '../../config/positions';
 
 export default {
     components: { Bounce },
