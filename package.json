@@ -1,0 +1,43 @@
+{
+  "name": "@enso-ui/toastr",
+  "version": "1.0.0",
+  "description": "A multi layout renderless Toastr",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laravel-enso/toastr.git"
+  },
+  "keywords": [
+    "toastr",
+    "notification",
+    "renderless"
+  ],
+  "author": "Adrian Ocneanu <aocneanu@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laravel-enso/toastr/issues"
+  },
+  "homepage": "https://github.com/laravel-enso/toastr#readme",
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@vue/eslint-config-airbnb": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "cross-env": "^5.1.6",
+    "eslint": "^5.0.1",
+    "eslint-plugin-vue": "^5.0.0",
+    "laravel-mix": "3.0.0",
+    "node-sass": "^4.11.0",
+    "webpack-cli": "^3.2.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.2.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.2",
+    "@fortawesome/free-solid-svg-icons": "^5.2.0",
+    "@fortawesome/vue-fontawesome": "^0.1.1",
+    "vue": "^2.5.16",
+    "webpack-cli": "^3.2.1"
+  }
+}
