@@ -1,6 +1,6 @@
 {
   "name": "@enso-ui/toastr",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A multi layout renderless Toastr",
   "main": "index.js",
   "scripts": {
