@@ -36,11 +36,6 @@ export default {
         progressRate() {
             return 100 / (this.duration / this.progressDelay);
         },
-        progressWidth() {
-            return {
-                width: `${this.progress}%`,
-            };
-        },
     },
 
     created() {
@@ -107,7 +102,7 @@ export default {
         return this.$scopedSlots.default({
             visible: this.visible,
             hovering: this.hovering,
-            progress: this.progressWidth,
+            progress: this.progress,
             hover: {
                 mouseenter: () => self.startHovering(),
                 mouseleave: () => self.stopHovering(),

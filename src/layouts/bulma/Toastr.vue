@@ -9,8 +9,10 @@
                 @click="close"
                 v-on="hover"
                 v-if="visible">
-                <div class="toastr-progress"
-                    :style="progress"/>
+                <progress-bar :progress="progress"
+                    :opacity="0.35"
+                    color="#000000"
+                    :thickness="2"/>
                 <article class="media">
                     <div class="media-left"
                         v-if="!html">
@@ -44,11 +46,11 @@ import Types from '../../config/types';
 import Icons from '../../config/icons';
 import RenderlessToastr from '../../renderless/Toastr.vue';
 import Bounce from '../../transitions/Bounce.vue';
-
+import ProgressBar from '../../../../../../../npm/progress-bar/src/ProgressBar.vue';
 import positions from '../../config/positions';
 
 export default {
-    components: { RenderlessToastr, Bounce },
+    components: { RenderlessToastr, Bounce, ProgressBar },
 
     props: {
         body: {
@@ -150,16 +152,6 @@ export default {
                     margin-top: auto;
                     margin-bottom: auto;
                 }
-            }
-
-            .toastr-progress {
-                position: absolute;
-                left: 0px;
-                top: 0px;
-                height: 2px;
-                width: 0%;
-                background-color: #000000;
-                opacity: 0.35;
             }
         }
     }

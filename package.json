@@ -36,6 +36,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
     "@fortawesome/free-solid-svg-icons": "^5.2.0",
     "@fortawesome/vue-fontawesome": "^0.1.1",
+    "@enso-ui/progress-bar": "^1.0.0",
     "animate.css": "^3.6.1",
     "bulma": "^0.7.2",
     "vue": "^2.5.16"
