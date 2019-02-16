@@ -1,3 +1,3 @@
-import Toastr from '../src/layouts/bulma/Toastr.vue';
+import Toastr from '../src/bulma/Toastr.vue';
 
 export default Toastr;
