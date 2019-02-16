@@ -1,51 +1,54 @@
 <template>
-    <bounce :position="position"
-        :duration="duration"
-        ref="toastr"
-        @after-leave="$destroy()">
-        <div slot-scope="{ hovering, progress, hover, close }"
-            class="notification toastr animated"
-            :class="[{ 'highlight': hovering }, type ? `is-${type}` : '']"
-            @click="close"
-            v-on="hover">
-            <div class="toastr-progress"
-                :style="progress"/>
-            <article class="media">
-                <div class="media-left"
-                    v-if="!html">
-                    <span class="icon is-small">
-                        <fa :icon="icon" size="lg"/>
-                    </span>
-                </div>
-                <div class="media-content">
-                    <div class="content">
-                        <p class="title is-5"
-                            v-if="title">
-                            {{ title }}
-                        </p>
-                        <p v-html="body"
-                            v-if="html"/>
-                        <p class="subtitle is-6"
-                            v-else>
-                            {{ body }}
-                        </p>
+    <renderless-toastr :duration="duration"
+        :position="position">
+        <bounce slot-scope="{ visible, hovering, progress, hover, close }"
+            :position="position"
+            :duration="duration">
+            <div class="notification toastr animated"
+                :class="[{ 'highlight': hovering }, type ? `is-${type}` : '']"
+                @click="close"
+                v-on="hover"
+                v-if="visible">
+                <div class="toastr-progress"
+                    :style="progress"/>
+                <article class="media">
+                    <div class="media-left"
+                        v-if="!html">
+                        <span class="icon is-small">
+                            <fa :icon="icon" size="lg"/>
+                        </span>
                     </div>
-                </div>
-            </article>
-        </div>
-    </bounce>
+                    <div class="media-content">
+                        <div class="content">
+                            <p class="title is-5"
+                                v-if="title">
+                                {{ title }}
+                            </p>
+                            <p v-html="body"
+                                v-if="html"/>
+                            <p class="subtitle is-6"
+                                v-else>
+                                {{ body }}
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </bounce>
+    </renderless-toastr>
 </template>
 
 <script>
 
 import Types from '../../config/types';
 import Icons from '../../config/icons';
+import RenderlessToastr from '../../renderless/Toastr.vue';
 import Bounce from '../../transitions/Bounce.vue';
 
 import positions from '../../config/positions';
 
 export default {
-    components: { Bounce },
+    components: { RenderlessToastr, Bounce },
 
     props: {
         body: {
@@ -142,6 +145,13 @@ export default {
                 margin-right: .5rem
             }
 
+            .media {
+                .media-left, .media-content {
+                    margin-top: auto;
+                    margin-bottom: auto;
+                }
+            }
+
             .toastr-progress {
                 position: absolute;
                 left: 0px;
@@ -150,13 +160,6 @@ export default {
                 width: 0%;
                 background-color: #000000;
                 opacity: 0.35;
-            }
-
-            .media {
-                .media-left, .media-content {
-                    margin-top: auto;
-                    margin-bottom: auto;
-                }
             }
         }
     }

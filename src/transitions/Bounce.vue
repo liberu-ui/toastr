@@ -1,26 +1,16 @@
 <template>
-    <renderless-toastr :position="position"
-        v-bind="$attrs">
-        <transition slot-scope="{ visible, hovering, progress, hover, close }"
-            appear
-            :enter-active-class="enterClass"
-            :leave-active-class="leaveClass"
-            @after-leave="$emit('after-leave')">
-            <slot :hovering="hovering"
-                :progress="progress"
-                :close="close"
-                :hover="hover"
-                v-if="visible"/>
-        </transition>
-    </renderless-toastr>
+    <transition appear
+        :enter-active-class="enterClass"
+        :leave-active-class="leaveClass"
+        v-on="$listeners">
+        <slot/>
+    </transition>
 </template>
 
 <script>
-import RenderlessToastr from '../renderless/Toastr.vue';
+
 
 export default {
-    components: { RenderlessToastr },
-
     props: {
         position: {
             type: String,
