@@ -1,10 +1,8 @@
 import ToastrHandler from './src/Toastr';
 
-const Toastr = {
+export default {
     install(Vue, { layout, options }) {
         Vue.prototype.$toastr = new ToastrHandler(Vue, layout, options);
     },
 };
-
-export { Toastr };
 
