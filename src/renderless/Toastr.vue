@@ -97,15 +97,13 @@ export default {
     },
 
     render() {
-        const self = this;
-
         return this.$scopedSlots.default({
             visible: this.visible,
             hovering: this.hovering,
             progress: this.progress,
             hover: {
-                mouseenter: () => self.startHovering(),
-                mouseleave: () => self.stopHovering(),
+                mouseenter: () => this.startHovering(),
+                mouseleave: () => this.stopHovering(),
             },
             close: this.close,
         });
