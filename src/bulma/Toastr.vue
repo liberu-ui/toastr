@@ -42,12 +42,12 @@
 
 <script>
 
-import Types from '../../config/types';
-import Icons from '../../config/icons';
-import RenderlessToastr from '../../renderless/Toastr.vue';
-import Bounce from '../../transitions/Bounce.vue';
-import ProgressBar from '../../../../../../../npm/progress-bar/src/ProgressBar.vue';
-import positions from '../../config/positions';
+import Types from '../config/types';
+import Icons from '../config/icons';
+import RenderlessToastr from '../renderless/Toastr.vue';
+import Bounce from '../transitions/Bounce.vue';
+import ProgressBar from '@enso-ui/progress-bar';
+import positions from '../config/positions';
 
 export default {
     components: { RenderlessToastr, Bounce, ProgressBar },
