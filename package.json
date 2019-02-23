@@ -18,7 +18,7 @@
   "author": "Adrian Ocneanu <aocneanu@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/laravel-enso/toastr/issues"
+    "url": "https://github.com/enso-ui/toastr/issues"
   },
   "homepage": "https://github.com/laravel-enso/toastr#readme",
   "devDependencies": {
