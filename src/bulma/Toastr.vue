@@ -1,5 +1,5 @@
 <template>
-    <renderless-toastr :duration="duration"
+    <core-toastr :duration="duration"
         :position="position">
         <bounce slot-scope="{ visible, hovering, progress, hover, close }"
             :position="position"
@@ -37,20 +37,21 @@
                 </article>
             </div>
         </bounce>
-    </renderless-toastr>
+    </core-toastr>
 </template>
 
 <script>
-
+import ProgressBar from '@enso-ui/progress-bar';
 import Types from '../config/types';
 import Icons from '../config/icons';
-import RenderlessToastr from '../renderless/Toastr.vue';
+import CoreToastr from '../renderless/Toastr.vue';
 import Bounce from '../transitions/Bounce.vue';
-import ProgressBar from '@enso-ui/progress-bar';
 import positions from '../config/positions';
 
 export default {
-    components: { RenderlessToastr, Bounce, ProgressBar },
+    name: 'Toastr',
+
+    components: { CoreToastr, Bounce, ProgressBar },
 
     props: {
         body: {
@@ -88,11 +89,9 @@ export default {
         },
     },
 };
-
 </script>
 
 <style lang="scss">
-
     .toastr-notifications {
         position: fixed;
         display: flex;
@@ -155,5 +154,4 @@ export default {
             }
         }
     }
-
 </style>

@@ -1,5 +1,4 @@
 <script>
-
 import Vue from 'vue';
 import positions from '../config/positions';
 
@@ -87,7 +86,7 @@ export default {
         },
         startTimer() {
             this.timer = setTimeout(() => {
-                this.visible = false;
+                this.close();
             }, this.duration);
 
             this.interval = setInterval(() => {
@@ -109,5 +108,4 @@ export default {
         });
     },
 };
-
 </script>
