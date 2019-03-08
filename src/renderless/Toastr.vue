@@ -3,6 +3,8 @@ import Vue from 'vue';
 import positions from '../config/positions';
 
 export default {
+    name: 'CoreToastr',
+
     props: {
         duration: {
             type: Number,
