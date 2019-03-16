@@ -1,3 +1,3 @@
-import Toastr from '../src/renderless/Toastr.vue';
+import CoreToastr from '../src/renderless/CoreToastr.vue';
 
-export default Toastr;
+export default CoreToastr;

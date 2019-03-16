@@ -44,7 +44,7 @@
 import ProgressBar from '@enso-ui/progress-bar';
 import Types from '../config/types';
 import Icons from '../config/icons';
-import CoreToastr from '../renderless/Toastr.vue';
+import CoreToastr from '../renderless/CoreToastr.vue';
 import Bounce from '../transitions/Bounce.vue';
 import positions from '../config/positions';
 
