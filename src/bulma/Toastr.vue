@@ -1,42 +1,43 @@
 <template>
     <core-toastr :duration="duration"
         :position="position">
-        <bounce slot-scope="{ visible, hovering, progress, hover, close }"
-            :position="position"
-            :duration="duration">
-            <div class="notification toastr animated"
-                :class="[{ 'highlight': hovering }, type ? `is-${type}` : '']"
-                @click="close"
-                v-on="hover"
-                v-if="visible">
-                <progress-bar :progress="progress"
-                    :opacity="0.35"
-                    color="#000000"
-                    :thickness="2"/>
-                <article class="media">
-                    <div class="media-left"
-                        v-if="!html">
-                        <span class="icon is-small">
-                            <fa :icon="icon" size="lg"/>
-                        </span>
-                    </div>
-                    <div class="media-content">
-                        <div class="content">
-                            <p class="title is-5"
-                                v-if="title">
-                                {{ title }}
-                            </p>
-                            <p v-html="body"
-                                v-if="html"/>
-                            <p class="subtitle is-6"
-                                v-else>
-                                {{ body }}
-                            </p>
+        <template v-slot:default="{ visible, hovering, progress, hover, close }">
+            <bounce :position="position"
+                :duration="duration">
+                <div class="notification toastr animated"
+                    :class="[{ 'highlight': hovering }, type ? `is-${type}` : '']"
+                    @click="close"
+                    v-on="hover"
+                    v-if="visible">
+                    <progress-bar :progress="progress"
+                        :opacity="0.35"
+                        color="#000000"
+                        :thickness="2"/>
+                    <article class="media">
+                        <div class="media-left"
+                            v-if="!html">
+                            <span class="icon is-small">
+                                <fa :icon="displayIcon" size="lg"/>
+                            </span>
                         </div>
-                    </div>
-                </article>
-            </div>
-        </bounce>
+                        <div class="media-content">
+                            <div class="content">
+                                <p class="title is-5"
+                                    v-if="title">
+                                    {{ title }}
+                                </p>
+                                <p v-html="body"
+                                    v-if="html"/>
+                                <p class="subtitle is-6"
+                                    v-else>
+                                    {{ body }}
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </bounce>
+        </template>
     </core-toastr>
 </template>
 
@@ -63,6 +64,10 @@ export default {
             default: 3500,
             validator: val => val > 0,
         },
+        icon: {
+            type: [String, Object],
+            default: null,
+        },
         html: {
             type: Boolean,
             default: false,
@@ -84,8 +89,8 @@ export default {
     },
 
     computed: {
-        icon() {
-            return Icons[this.type];
+        displayIcon() {
+            return this.icon || Icons[this.type];
         },
     },
 };

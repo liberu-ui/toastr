@@ -35,6 +35,11 @@ class Toastr {
         this.toastr('danger', body);
     }
 
+    icon(icon) {
+        this.options.icon = icon;
+        return this;
+    }
+
     info(body) {
         this.toastr('info', body);
     }
