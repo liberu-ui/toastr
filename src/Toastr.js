@@ -6,6 +6,7 @@ class Toastr {
 
         this.defaults = {
             duration: options.duration,
+            icon: null,
             title: null,
             html: false,
         };
