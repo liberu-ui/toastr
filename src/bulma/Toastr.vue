@@ -17,7 +17,8 @@
                         <div class="media-left"
                             v-if="!html">
                             <span class="icon is-small">
-                                <fa :icon="displayIcon" size="lg"/>
+                                <fa :icon="displayIcon"
+                                    size="lg"/>
                             </span>
                         </div>
                         <div class="media-content">
