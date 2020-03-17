@@ -12,6 +12,16 @@ class Toastr {
         };
     }
 
+    when(condition, callback, fallback = null) {
+        if (condition) {
+            return callback(this, condition) || this;
+        } if (fallback) {
+            return fallback(this, condition) || this;
+        }
+
+        return this;
+    }
+
     title(title) {
         this.options.title = title;
         return this;
