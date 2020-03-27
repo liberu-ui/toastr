@@ -16,7 +16,7 @@
                     <article class="media">
                         <div class="media-left"
                             v-if="!html">
-                            <span class="icon is-small">
+                            <span class="icon is-medium">
                                 <fa :icon="displayIcon"
                                     size="lg"/>
                             </span>
@@ -130,7 +130,7 @@ export default {
         .toastr.notification {
             display: flex;
             width: 20em;
-            padding: .6em;
+            padding: .4em;
             pointer-events: auto;
             position: relative;
             overflow-x: hidden;
@@ -148,15 +148,22 @@ export default {
                 box-shadow: 0 0 5px 3px hsla(0,0%,4%,.3);
             }
 
-            .media-left {
-                margin-right: .5rem
-            }
-
             .media {
-                .media-left, .media-content {
+                .media-left {
+                    margin-right: .5rem;
                     margin-top: auto;
                     margin-bottom: auto;
+
+                    .icon {
+                        vertical-align: middle;
+                    }
                 }
+            }
+
+
+            .media .media-content {
+                margin-top: auto;
+                margin-bottom: auto;
             }
         }
     }
