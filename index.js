@@ -1,7 +1,4 @@
-import ToastrPlugin from './src/Toastr';
+import Layout from './src/bulma/Toastr.vue';
+import Toastr from './src/Toastr';
 
-export default {
-    install(Vue, { layout, options }) {
-        Vue.prototype.$toastr = new ToastrPlugin(Vue, layout, options);
-    },
-};
+export default new Toastr(Layout);

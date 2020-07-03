@@ -1,15 +1,24 @@
+import Vue from 'vue';
+
 class Toastr {
-    constructor(Vue, layout, options) {
+    constructor(layout) {
         this.Vue = Vue;
         this.layout = layout;
-        this.options = options;
 
-        this.defaults = {
-            duration: options.duration,
+        this.defaultOptions = {
+            duration: 3500,
+            position: 'top-center',
             icon: null,
             title: null,
             html: false,
         };
+
+        this.options = { ...this.defaultOptions };
+    }
+
+    defaults(defaultOptions) {
+        Object.assign(this.defaultOptions, defaultOptions);
+        return this;
     }
 
     when(condition, callback, fallback = null) {
@@ -72,9 +81,9 @@ class Toastr {
     }
 
     toastr(type, body) {
-        const ToastrNotification = this.Vue.extend(this.layout);
+        const ToastrNotification = Vue.extend(this.layout);
 
-        const props = Object.assign({}, this.options, { type, body });
+        const props = { ...this.options, type, body };
 
         (new ToastrNotification({
             propsData: props,
@@ -84,7 +93,7 @@ class Toastr {
     }
 
     reset() {
-        Object.assign(this.options, this.defaults);
+        Object.assign(this.options, this.defaultOptions);
     }
 }
 
