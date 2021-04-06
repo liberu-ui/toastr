@@ -23,8 +23,10 @@
                         </div>
                         <div class="media-content">
                             <div class="content">
+                                <p v-html="title"
+                                   v-if="html && title"/>
                                 <p class="title is-5"
-                                    v-if="title">
+                                   v-else-if="title">
                                     {{ title }}
                                 </p>
                                 <p v-html="body"
