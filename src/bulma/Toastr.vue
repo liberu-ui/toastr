@@ -23,16 +23,22 @@
                         </div>
                         <div class="media-content">
                             <div class="content">
-                                <p class="title is-5"
-                                    v-if="title">
-                                    {{ title }}
-                                </p>
-                                <p v-html="body"
-                                    v-if="html"/>
-                                <p class="subtitle is-6"
-                                    v-else>
-                                    {{ body }}
-                                </p>
+                                <template v-if="html">
+                                    <!-- eslint-disable-next-line vue/no-v-html -->
+                                    <p v-html="title"
+                                        v-if="title"/>
+                                    <!-- eslint-disable-next-line vue/no-v-html -->
+                                    <p v-html="body"/>
+                                </template>
+                                <template v-else>
+                                    <p class="title is-5"
+                                        v-if="title">
+                                        {{ title }}
+                                    </p>
+                                    <p class="subtitle is-6">
+                                        {{ body }}
+                                    </p>
+                                </template>
                             </div>
                         </div>
                     </article>
