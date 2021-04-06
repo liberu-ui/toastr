@@ -28,8 +28,7 @@
                                     <p v-html="title"
                                         v-if="title"/>
                                     <!-- eslint-disable-next-line vue/no-v-html -->
-                                    <p v-html="body"
-                                        v-if="html"/>
+                                    <p v-html="body"/>
                                 </template>
                                 <template v-else>
                                     <p class="title is-5"
