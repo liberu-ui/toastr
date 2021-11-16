@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import ProgressBar from '@enso-ui/progress-bar';
 import Types from '../config/types';
 import Icons from '../config/icons';
@@ -59,7 +60,7 @@ import positions from '../config/positions';
 export default {
     name: 'Toastr',
 
-    components: { CoreToastr, Bounce, ProgressBar },
+    components: { Bounce, CoreToastr, Fa, ProgressBar },
 
     props: {
         body: {
