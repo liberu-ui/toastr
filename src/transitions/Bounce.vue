@@ -1,8 +1,7 @@
 <template>
     <transition appear
         :enter-active-class="enterClass"
-        :leave-active-class="leaveClass"
-        v-on="$listeners">
+        :leave-active-class="leaveClass"   >
         <slot/>
     </transition>
 </template>

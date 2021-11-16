@@ -1,7 +1,7 @@
 <template>
     <core-toastr :duration="duration"
         :position="position">
-        <template #:default="{ visible, hovering, progress, hover, close }">
+        <template #default="{ visible, hovering, progress, hover, close }">
             <bounce :position="position"
                 :duration="duration">
                 <div class="notification toastr animated"

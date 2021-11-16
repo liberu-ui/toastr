@@ -98,7 +98,7 @@ export default {
     },
 
     render() {
-        return this.$scopedSlots.default({
+        return this.$slots.default({
             visible: this.visible,
             hovering: this.hovering,
             progress: this.progress,
