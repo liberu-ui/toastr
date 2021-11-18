@@ -1,7 +1,7 @@
 <template>
     <transition appear
         :enter-active-class="enterClass"
-        :leave-active-class="leaveClass"   >
+        :leave-active-class="leaveClass">
         <slot/>
     </transition>
 </template>
