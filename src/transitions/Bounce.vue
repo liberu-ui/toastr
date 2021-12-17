@@ -1,15 +1,18 @@
 <template>
     <transition appear
         :enter-active-class="enterClass"
-        :leave-active-class="leaveClass">
+        :leave-active-class="leaveClass"
+        @after-leave="$emit('close')">
         <slot/>
     </transition>
 </template>
 
 <script>
-
+import 'animate.css';
 
 export default {
+    emits: ['close'],
+
     props: {
         position: {
             type: String,
@@ -31,19 +34,18 @@ export default {
             }
         },
         enterClass() {
-            return `bounceIn${this.direction}`;
+            return `animate__bounceIn${this.direction}`;
         },
         leaveClass() {
             switch (this.direction) {
             case 'Down':
-                return 'bounceOutUp';
+                return 'animate__bounceOutUp';
             case 'Up':
-                return 'bounceOutDown';
+                return 'animate__bounceOutDown';
             default:
-                return `bounceOut${this.direction}`;
+                return `animate__bounceOut${this.direction}`;
             }
         },
     },
 };
-
 </script>
