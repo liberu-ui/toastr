@@ -1,5 +1,4 @@
 <script>
-import Vue from 'vue';
 import positions from '../config/positions';
 
 export default {
