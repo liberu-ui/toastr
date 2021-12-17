@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid/non-secure';
 import Container from './bulma/Container.vue';
 
 const defaultOptions = {
-    duration: 350000,
+    duration: 3500,
     icon: null,
     title: null,
     html: false,
