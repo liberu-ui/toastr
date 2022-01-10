@@ -4,8 +4,6 @@ import positions from '../config/positions';
 export default {
     name: 'CoreToastr',
 
-    emits: ['update:visible'],
-
     inheritAttrs: false,
 
     props: {
@@ -24,6 +22,8 @@ export default {
             required: true,
         },
     },
+
+    emits: ['update:visible'],
 
     data: () => ({
         hovering: false,

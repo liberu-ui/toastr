@@ -1,15 +1,15 @@
 <template>
     <div class="position"
         :class="cssClass">
-        <toastr v-for="toastr in toastrs"
-            v-bind="{...toastr, position}"
-            @close="pop(toastr)"/>
+        <toastr v-for="toaster in toastrs"
+            :key="toaster.key"
+            v-bind="{...toaster, position}"
+            @close="pop(toaster)"/>
     </div>
 </template>
 
 <script>
 import Toastr from './Toastr.vue';
-import positions from '@enso-ui/toastr/src/config/positions.js';
 
 export default {
     name: 'Container',
@@ -34,8 +34,8 @@ export default {
         pop({ key }) {
             const index = this.toastrs.findIndex(toastr => toastr.key === key);
 
-            this.toastrs.splice(index,1);
-        }
-    }
+            this.toastrs.splice(index, 1);
+        },
+    },
 };
 </script>

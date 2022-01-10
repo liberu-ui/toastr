@@ -11,7 +11,6 @@
 import 'animate.css';
 
 export default {
-    emits: ['close'],
 
     props: {
         position: {
@@ -19,6 +18,7 @@ export default {
             required: true,
         },
     },
+    emits: ['close'],
 
     computed: {
         direction() {

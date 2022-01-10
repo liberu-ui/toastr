@@ -62,7 +62,9 @@ import icons from '../config/icons';
 export default {
     name: 'Toastr',
 
-    components: { Bounce, CoreToastr, Fa, ProgressBar },
+    components: {
+        Bounce, CoreToastr, Fa, ProgressBar,
+    },
 
     props: {
         body: {
