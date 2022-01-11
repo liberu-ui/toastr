@@ -2,21 +2,23 @@
     <transition appear
         :enter-active-class="enterClass"
         :leave-active-class="leaveClass"
-        v-on="$listeners">
+        @after-leave="$emit('close')">
         <slot/>
     </transition>
 </template>
 
 <script>
-
+import 'animate.css';
 
 export default {
+
     props: {
         position: {
             type: String,
             required: true,
         },
     },
+    emits: ['close'],
 
     computed: {
         direction() {
@@ -32,19 +34,18 @@ export default {
             }
         },
         enterClass() {
-            return `bounceIn${this.direction}`;
+            return `animate__bounceIn${this.direction}`;
         },
         leaveClass() {
             switch (this.direction) {
             case 'Down':
-                return 'bounceOutUp';
+                return 'animate__bounceOutUp';
             case 'Up':
-                return 'bounceOutDown';
+                return 'animate__bounceOutDown';
             default:
-                return `bounceOut${this.direction}`;
+                return `animate__bounceOut${this.direction}`;
             }
         },
     },
 };
-
 </script>

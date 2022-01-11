@@ -1,75 +1,75 @@
 <template>
-    <core-toastr :duration="duration"
-        :position="position">
-        <template v-slot:default="{ visible, hovering, progress, hover, close }">
-            <bounce :position="position"
-                :duration="duration">
-                <div class="notification toastr animated"
-                    :class="[{ 'highlight': hovering }, type ? `is-${type}` : '']"
-                    @click="close"
-                    v-on="hover"
-                    v-if="visible">
-                    <progress-bar :progress="progress"
-                        :opacity="0.35"
-                        color="#000000"
-                        :thickness="2"/>
-                    <article class="media">
-                        <div class="media-left"
-                            v-if="!html">
-                            <span class="icon is-medium">
-                                <fa :icon="displayIcon"
-                                    size="lg"/>
-                            </span>
-                        </div>
-                        <div class="media-content">
-                            <div class="content">
-                                <template v-if="html">
-                                    <!-- eslint-disable-next-line vue/no-v-html -->
-                                    <p v-html="title"
-                                        v-if="title"/>
-                                    <!-- eslint-disable-next-line vue/no-v-html -->
-                                    <p v-html="body"/>
-                                </template>
-                                <template v-else>
-                                    <p class="title is-5"
-                                        v-if="title">
-                                        {{ title }}
-                                    </p>
-                                    <p class="subtitle is-6">
-                                        {{ body }}
-                                    </p>
-                                </template>
+    <bounce :position="position">
+        <div class="toastr animate__animated"
+            v-if="visible">
+            <core-toastr v-bind="$attrs"
+                :position="position"
+                v-model:visible="visible">
+                <template #default="{ close, hover, hovering, progress }">
+                    <div class="notification"
+                         :class="[{[`is-${type}`]: type }, { 'highlight': hovering }]"
+                         @click="close">
+                        <progress-bar color="#000000"
+                            :progress="progress"
+                            :opacity="0.35"
+                            :thickness="2"/>
+                        <article class="media"
+                            v-on="hover">
+                            <div class="media-left"
+                                v-if="!html">
+                                <span class="icon is-medium">
+                                    <fa :icon="displayIcon"
+                                        size="lg"/>
+                                </span>
                             </div>
-                        </div>
-                    </article>
-                </div>
-            </bounce>
-        </template>
-    </core-toastr>
+                            <div class="media-content">
+                                <div class="content">
+                                    <template v-if="html">
+                                        <!-- eslint-disable-next-line vue/no-v-html -->
+                                        <p v-html="title"
+                                            v-if="title"/>
+                                        <!-- eslint-disable-next-line vue/no-v-html -->
+                                        <p v-html="body"/>
+                                    </template>
+                                    <template v-else>
+                                        <p class="title is-5"
+                                            v-if="title">
+                                            {{ title }}
+                                        </p>
+                                        <p class="subtitle is-6">
+                                            {{ body }}
+                                        </p>
+                                    </template>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </template>
+            </core-toastr>
+        </div>
+    </bounce>
 </template>
 
 <script>
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import ProgressBar from '@enso-ui/progress-bar';
-import Types from '../config/types';
-import Icons from '../config/icons';
 import CoreToastr from '../renderless/CoreToastr.vue';
 import Bounce from '../transitions/Bounce.vue';
 import positions from '../config/positions';
+import types from '../config/types';
+import icons from '../config/icons';
 
 export default {
     name: 'Toastr',
 
-    components: { CoreToastr, Bounce, ProgressBar },
+    components: {
+        Bounce, CoreToastr, Fa, ProgressBar,
+    },
 
     props: {
         body: {
             type: String,
             required: true,
-        },
-        duration: {
-            type: Number,
-            default: 3500,
-            validator: val => val > 0,
         },
         icon: {
             type: [String, Object],
@@ -81,7 +81,7 @@ export default {
         },
         position: {
             type: String,
-            default: 'top-center',
+            required: true,
             validator: position => positions.includes(position),
         },
         title: {
@@ -91,20 +91,25 @@ export default {
         type: {
             type: String,
             required: true,
-            validator: val => Types.includes(val),
+            validator: val => types.includes(val),
         },
     },
 
+    data: () => ({
+        visible: true,
+    }),
+
     computed: {
         displayIcon() {
-            return this.icon || Icons[this.type];
+            return this.icon || icons[this.type];
         },
     },
 };
 </script>
 
 <style lang="scss">
-    .toastr-notifications {
+.toastr-notifications {
+    .position {
         position: fixed;
         display: flex;
         flex-direction: column;
@@ -133,44 +138,46 @@ export default {
             margin-left: calc(50% - 10em);
         }
 
-        .toastr.notification {
-            display: flex;
-            width: 20em;
-            padding: .4em;
-            pointer-events: auto;
-            position: relative;
-            overflow-x: hidden;
-            cursor: pointer;
-            -webkit-box-shadow: 0 0 5px 3px hsla(0,0%,50%,.4);
-            box-shadow: 0 0 5px 3px hsla(0,0%,50%,.4);
-            transition: box-shadow 0.2s ease-in-out;
-
+        .toastr {
             &:not(:last-child) {
                 margin-bottom: .35em;
             }
 
-            &.highlight {
-                -webkit-box-shadow: 0 0 5px 3px hsla(0,0%,4%,.5);
-                box-shadow: 0 0 5px 3px hsla(0,0%,4%,.3);
-            }
+            .notification {
+                display: flex;
+                width: 20em;
+                padding: .4em;
+                pointer-events: auto;
+                position: relative;
+                overflow-x: hidden;
+                cursor: pointer;
+                -webkit-box-shadow: 0 0 5px 3px hsla(0,0%,50%,.4);
+                box-shadow: 0 0 5px 3px hsla(0,0%,50%,.4);
+                transition: box-shadow 0.2s ease-in-out;
 
-            .media {
-                .media-left {
-                    margin-right: .5rem;
-                    margin-top: auto;
-                    margin-bottom: auto;
+                &.highlight {
+                    -webkit-box-shadow: 0 0 5px 3px hsla(0,0%,4%,.5);
+                    box-shadow: 0 0 5px 3px hsla(0,0%,4%,.3);
+                }
 
-                    .icon {
-                        vertical-align: middle;
+                .media {
+                    .media-left {
+                        margin-right: .5rem;
+                        margin-top: auto;
+                        margin-bottom: auto;
+
+                        .icon {
+                            vertical-align: middle;
+                        }
                     }
                 }
-            }
 
-
-            .media .media-content {
-                margin-top: auto;
-                margin-bottom: auto;
+                .media .media-content {
+                    margin-top: auto;
+                    margin-bottom: auto;
+                }
             }
         }
     }
+}
 </style>

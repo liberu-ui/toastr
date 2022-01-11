@@ -1,30 +1,28 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
+import { nanoid } from 'nanoid/non-secure';
+import Container from './bulma/Container.vue';
+
+const defaultOptions = {
+    duration: 3500,
+    icon: null,
+    title: null,
+    html: false,
+};
+
+const defaultPosition = 'top-center';
+const containerClass = 'toastr-notifications';
 
 class Toastr {
-    constructor(layout) {
-        this.Vue = Vue;
-        this.layout = layout;
-
-        this.defaultOptions = {
-            duration: 3500,
-            position: 'top-center',
-            icon: null,
-            title: null,
-            html: false,
-        };
-
-        this.options = { ...this.defaultOptions };
-    }
-
-    defaults(defaultOptions) {
-        Object.assign(this.defaultOptions, defaultOptions);
-        return this;
+    constructor() {
+        this.setup(defaultPosition);
     }
 
     when(condition, callback, fallback = null) {
         if (condition) {
             return callback(this, condition) || this;
-        } if (fallback) {
+        }
+
+        if (fallback) {
             return fallback(this, condition) || this;
         }
 
@@ -38,11 +36,6 @@ class Toastr {
 
     duration(duration) {
         this.options.duration = duration;
-        return this;
-    }
-
-    position(position) {
-        this.options.position = position;
         return this;
     }
 
@@ -80,20 +73,27 @@ class Toastr {
         this.toastr('warning', body);
     }
 
-    toastr(type, body) {
-        const ToastrNotification = Vue.extend(this.layout);
+    createContainer() {
+        const container = document.createElement('div');
+        container.className = containerClass;
+        document.body.appendChild(container);
 
-        const props = { ...this.options, type, body };
-
-        (new ToastrNotification({
-            propsData: props,
-        })).$mount();
-
-        this.reset();
+        return createApp(Container).mount(container);
     }
 
-    reset() {
-        Object.assign(this.options, this.defaultOptions);
+    toastr(type, body) {
+        const props = { ...this.options, type, body, key: nanoid() };
+
+        this.container.toastr(props);
+
+        this.setup();
+    }
+
+    setup(position = null) {
+        this.options = { ...defaultOptions };
+
+        this.container ??= this.createContainer();
+        this.container.position = position ?? this.container.position;
     }
 }
 
