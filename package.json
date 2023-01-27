@@ -1,5 +1,5 @@
 {
-  "name": "@enso-ui/toastr",
+  "name": "@cgdsoftware/toastr",
   "version": "3.0.11",
   "description": "A multi layout renderless Toastr",
   "main": "index.js",
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/enso-ui/toastr#readme",
   "dependencies": {
-    "@enso-ui/progress-bar": "^2.0",
+    "@cgdsoftware/progress-bar": "^2.0",
     "@fortawesome/fontawesome-free": "^5.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
