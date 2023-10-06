@@ -1,10 +1,10 @@
 # Toastr
 
-![npm license](https://img.shields.io/npm/l/@enso-ui/toastr.svg) 
-![npm download](https://img.shields.io/npm/dm/@enso-ui/toastr.svg) 
-![GitHub top language](https://img.shields.io/github/languages/top/enso-ui/toastr.svg) 
-![GitHub issues](https://img.shields.io/github/issues/enso-ui/toastr.svg) 
-![npm version](https://img.shields.io/npm/v/@enso-ui/toastr.svg) 
+![npm license](https://img.shields.io/npm/l/@liberu-ui/toastr.svg) 
+![npm download](https://img.shields.io/npm/dm/@liberu-ui/toastr.svg) 
+![GitHub top language](https://img.shields.io/github/languages/top/liberu-ui/toastr.svg) 
+![GitHub issues](https://img.shields.io/github/issues/liberu-ui/toastr.svg) 
+![npm version](https://img.shields.io/npm/v/@liberu-ui/toastr.svg) 
 
 Multi layout renderless Toaster Notification
 

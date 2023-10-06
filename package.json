@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/enso-ui/toastr.git"
+    "url": "git+https://github.com/liberu-ui/toastr.git"
   },
   "keywords": [
     "toastr",
@@ -18,9 +18,9 @@
   "author": "Adrian Ocneanu <aocneanu@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/enso-ui/toastr/issues"
+    "url": "https://github.com/liberu-ui/toastr/issues"
   },
-  "homepage": "https://github.com/enso-ui/toastr#readme",
+  "homepage": "https://github.com/liberu-ui/toastr#readme",
   "dependencies": {
     "@liberu-ui/progress-bar": "^2.0",
     "@fortawesome/fontawesome-free": "^5.2.0",
