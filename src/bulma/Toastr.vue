@@ -52,7 +52,7 @@
 
 <script>
 import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
-import ProgressBar from '@enso-ui/progress-bar';
+import ProgressBar from '@liberu-ui/progress-bar';
 import CoreToastr from '../renderless/CoreToastr.vue';
 import Bounce from '../transitions/Bounce.vue';
 import positions from '../config/positions';
