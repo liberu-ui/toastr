@@ -1,6 +1,6 @@
 {
   "name": "@liberu-ui/toastr",
-  "version": "3.0.18",
+  "version": "3.0.19",
   "description": "A multi layout renderless Toastr",
   "main": "index.ts",
   "scripts": {
