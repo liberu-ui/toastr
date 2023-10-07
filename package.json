@@ -2,7 +2,7 @@
   "name": "@liberu-ui/toastr",
   "version": "3.0.16",
   "description": "A multi layout renderless Toastr",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
